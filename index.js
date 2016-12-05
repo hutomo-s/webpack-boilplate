@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {NavItem, Navbar, Dropdown, Button, Icon, Footer, Col, Row, Input} from 'react-materialize';
+import {NavItem, Navbar, Dropdown, Button, Icon, Footer, Col, Row, Input, CardPanel} from 'react-materialize';
 
 class Nav extends React.Component {
   render() {
@@ -44,7 +44,7 @@ class Paralax extends React.Component {
 }
 
 const ptop0 = {
-  'padding-top': '0px',
+  'paddingTop': '0px',
 };
 
 class FootLinks extends React.Component {
@@ -95,8 +95,8 @@ class FootLinks extends React.Component {
         <footer className="page-footer blue-grey darken-2" style={ptop0}>
           <div className="footer-copyright">
             <div className="container">
-              <span>Copyright © 2016 <a class="grey-text text-lighten-4">Perdana</a> All rights reserved.</span>
-              <span className="right"> Design and Developed by <a className="grey-text text-lighten-4">PerdanaLabs</a></span>
+              <span>Copyright © 2016 <a className="grey-text text-lighten-4">Hutomo</a> All rights reserved.</span>
+              <span className="right"> Design and Developed by <a className="grey-text text-lighten-4">HutomoLabs</a></span>
               </div>
           </div>
         </footer>
@@ -106,6 +106,76 @@ class FootLinks extends React.Component {
      
     );
   }
+}
+
+class Result extends React.Component {
+  render() {
+    return (
+       <div className="row container section">
+          <h5>* Culinary in Slipi</h5>
+
+          <CardPanel className="lighten-4 black-text">
+            <div className="row">
+              <Col s={2}>
+                img
+              </Col>
+
+              <Col s={10}>
+                Resto Kemuning <br />
+                (Cat) Chinese Food <br />
+                (Open) 10.00 - 21.00 <br />
+                Jl. Slipi <br />
+              </Col>
+           
+            </div>
+          </CardPanel>
+
+          <CardPanel className="lighten-4 black-text">
+
+            <div className="row">
+              <Col s={2}>
+                img
+              </Col>
+
+              <Col s={10}>
+                Starbucks Wisma 77 <br />
+                (Cat) Coffee Shop<br />
+                (Open) 10.00 - 21.00 <br />
+                Jl. Slipi <br />
+              </Col>
+            </div>
+          </CardPanel>
+
+          <CardPanel className="lighten-4 black-text">
+             <div className="row">
+              <Col s={2}>
+                img
+              </Col>
+
+              <Col s={10}>
+                ATM BNI Wisma 77 <br />
+                Wisma 77, Jl. Slipi<br />
+              </Col>
+            </div>
+          </CardPanel>
+
+          <CardPanel className="lighten-4 black-text">
+            <div className="row">
+              <Col s={2}>
+                img
+              </Col>
+
+              <Col s={10}>
+                Alfamart KS Tubun <br />
+                Jl. KS Tubun, Slipi<br />
+              </Col>
+            </div>
+          </CardPanel>
+       
+       </div>
+    );
+    }
+
 }
 
 class Dd extends React.Component {
@@ -131,6 +201,7 @@ class App extends React.Component {
       <div>
         <Nav />
         <Paralax />
+        <Result />
         <FootLinks />
       </div>
     );
