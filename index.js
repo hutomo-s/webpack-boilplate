@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {NavItem, Navbar, Dropdown, Button, Icon, Footer, Col} from 'react-materialize';
+import {NavItem, Navbar, Dropdown, Button, Icon, Footer, Col, Row, Input} from 'react-materialize';
 
 class Nav extends React.Component {
   render() {
@@ -20,12 +20,18 @@ class Paralax extends React.Component {
         <div className="section p-section no-pad-bot">
           <div className="container">
             
-            <h1 className="header center teal-text text-lighten-2">Parallax Template</h1>
+            <h1 className="header center teal-text text-lighten-2">TraveLink</h1>
             <div className="row center">
-              <h5 className="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+              <h5 className="header col s12 light">
+                See places around your destination
+              </h5>
             </div>
             <div className="row center">
-              <a href="#" className="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+
+              <Row>
+                  <Input placeholder="Street, Adress, Postal Code" s={12} m={6} l={6} label="" />
+                  <Button s={6}>Search</Button>
+              </Row>
             </div>
           </div>
 
@@ -50,35 +56,35 @@ class FootLinks extends React.Component {
         <div className="row container section">
           
           <Col s={12} m={6} l={6} className='grid-example'>
-            <h5 className="white-text">Popular Culinary Destination</h5>
+            <h5 className="truncate white-text">Popular Culinary Destination</h5>
             <ul>
-              <li><a className="grey-text text-lighten-3" href="#!">Slipi, DKI Jakarta Culinary</a></li>
-              <li><a className="grey-text text-lighten-3" href="#!">Cihampelas, Bandung Culinary</a></li>
-              <li><a className="grey-text text-lighten-3" href="#!">Tj Pandan, Belitung Culinary</a></li>
+              <li><a className="truncate grey-text text-lighten-3" href="#!">Slipi, DKI Jakarta Culinary</a></li>
+              <li><a className="truncate grey-text text-lighten-3" href="#!">Cihampelas, Bandung Culinary</a></li>
+              <li><a className="truncate grey-text text-lighten-3" href="#!">Tj Pandan, Belitung Culinary</a></li>
             </ul>
           </Col>
 
           <Col s={12} m={6} l={6} className='grid-example'>
-            <h5 className="white-text">Find Nearest ATM</h5>
+            <h5 className="truncate white-text">Find Nearest ATM</h5>
             <ul>
-              <li><a className="grey-text text-lighten-3" href="#!">Slipi, DKI Jakarta ATMs</a></li>
-              <li><a className="grey-text text-lighten-3" href="#!">Cihampelas, Bandung ATMs</a></li>
-              <li><a className="grey-text text-lighten-3" href="#!">Tj Pandan, Belitung ATMs</a></li>
+              <li><a className="truncate grey-text text-lighten-3" href="#!">Slipi, DKI Jakarta ATMs</a></li>
+              <li><a className="truncate grey-text text-lighten-3" href="#!">Cihampelas, Bandung ATMs</a></li>
+              <li><a className="truncate grey-text text-lighten-3" href="#!">Tj Pandan, Belitung ATMs</a></li>
             </ul>
           </Col>
 
           <Col s={12} m={6} l={6} className='grid-example'>
-            <h5 className="white-text">Need Groceries?</h5>
+            <h5 className="truncate white-text">Need Groceries?</h5>
             <ul>
-              <li><a className="grey-text text-lighten-3" href="#!">Slipi, DKI Jakarta Minimarkets</a></li>
-              <li><a className="grey-text text-lighten-3" href="#!">Cihampelas, Bandung Minimarkets</a></li>
-              <li><a className="grey-text text-lighten-3" href="#!">Tj Pandan, Belitung Minimarkets</a></li>
+              <li><a className="truncate grey-text text-lighten-3" href="#!">Slipi, DKI Jakarta Minimarkets</a></li>
+              <li><a className="truncate grey-text text-lighten-3" href="#!">Cihampelas, Bandung Minimarkets</a></li>
+              <li><a className="truncate grey-text text-lighten-3" href="#!">Tj Pandan, Belitung Minimarkets</a></li>
               
             </ul>
           </Col>
 
           <Col s={6} m={3} l={3} className='grid-example'>
-            <h5 className="white-text">About TraveLink</h5>
+            <h5 className="truncate white-text">About TraveLink</h5>
             <ul>
               <li><a className="grey-text text-lighten-3" href="#!">Why use TraveLink</a></li>
               <li><a className="grey-text text-lighten-3" href="#!">Contact Us</a></li>
