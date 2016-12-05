@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {NavItem, Navbar, Dropdown, Button, Icon, Footer, Col, Row, Input, CardPanel} from 'react-materialize';
+import {NavItem, Navbar, Dropdown, Button, Icon, Footer, Col, Row, Input, CardPanel, Tabs, Tab} from 'react-materialize';
 
 class Nav extends React.Component {
   render() {
@@ -108,6 +108,20 @@ class FootLinks extends React.Component {
   }
 }
 
+class Ttab extends React.Component {
+  render() {
+    return (
+      <div className="row container section">
+        <Tabs className='tab-demo z-depth-1'>
+            <Tab title="Culinary">Culinary</Tab>
+            <Tab title="Minimarket" active>Minimarket</Tab>
+            <Tab title="ATM">ATM</Tab>
+        </Tabs>
+      </div>
+    );
+  }
+}
+
 class Result extends React.Component {
   render() {
     return (
@@ -154,6 +168,7 @@ class Result extends React.Component {
 
               <Col s={10}>
                 ATM BNI Wisma 77 <br />
+                (Cat) ATM<br />
                 Wisma 77, Jl. Slipi<br />
               </Col>
             </div>
@@ -167,7 +182,23 @@ class Result extends React.Component {
 
               <Col s={10}>
                 Alfamart KS Tubun <br />
+                (Cat) Minimarket<br />
                 Jl. KS Tubun, Slipi<br />
+              </Col>
+            </div>
+          </CardPanel>
+
+          <CardPanel className="lighten-4 black-text">
+            <div className="row">
+              <Col s={2}>
+                img
+              </Col>
+
+              <Col s={10}>
+                Lawson Belitung <br />
+                (Cat) Convenient Store<br />
+                (Open) 24 hours <br />
+                Jl. Tanjung Pandan Belitung<br />
               </Col>
             </div>
           </CardPanel>
@@ -201,6 +232,7 @@ class App extends React.Component {
       <div>
         <Nav />
         <Paralax />
+        <Ttab />
         <Result />
         <FootLinks />
       </div>
