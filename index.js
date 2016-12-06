@@ -128,7 +128,7 @@ class Result extends React.Component {
        <div className="row container section">
           <h5>* Culinary in Slipi</h5>
 
-          <CardPanel className="lighten-4 black-text">
+          <CardPanel className="lighten-4 black-text hoverable">
             <div className="row">
               <Col s={2}>
                 img
@@ -144,7 +144,7 @@ class Result extends React.Component {
             </div>
           </CardPanel>
 
-          <CardPanel className="lighten-4 black-text">
+          <CardPanel className="lighten-4 black-text hoverable">
 
             <div className="row">
               <Col s={2}>
@@ -160,7 +160,7 @@ class Result extends React.Component {
             </div>
           </CardPanel>
 
-          <CardPanel className="lighten-4 black-text">
+          <CardPanel className="lighten-4 black-text hoverable">
              <div className="row">
               <Col s={2}>
                 img
@@ -174,7 +174,7 @@ class Result extends React.Component {
             </div>
           </CardPanel>
 
-          <CardPanel className="lighten-4 black-text">
+          <CardPanel className="lighten-4 black-text hoverable">
             <div className="row">
               <Col s={2}>
                 img
@@ -188,7 +188,7 @@ class Result extends React.Component {
             </div>
           </CardPanel>
 
-          <CardPanel className="lighten-4 black-text">
+          <CardPanel className="lighten-4 black-text hoverable">
             <div className="row">
               <Col s={2}>
                 img
