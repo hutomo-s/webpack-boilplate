@@ -16,11 +16,27 @@
 	<script type="text/babel">
 
 		class Popular extends React.Component {
-			
+			render() {
+				var airportRows = this.props.searchResults.map(function(result) {
+					if(!result.popular){
+						console.log(result);
+						return;
+					}
+					
+					return <AirportRow city={result.airport_city} name={result.airport_name} code={result.airport_code} />
+				});
+				return(
+					<ul>
+						{airportRows}
+					</ul>           
+				);
+			}
 		}
 
 		class AirportRow extends React.Component {
-
+			render() {
+				return (<p> {this.props.city} {this.props.name} {this.props.code} </p>);
+			}
 		}
 		
 		class FilterableAirport extends React.Component {
@@ -75,7 +91,7 @@
 					filterText={this.state.filterText}
 					onUserInput={this.handleUserInput}
 					/>
-					
+					<Popular searchResults={this.state.airports} />
 				</div>
 				);
 			}
