@@ -16,7 +16,30 @@ class Nav extends React.Component {
 class Paralax extends React.Component {
   render() {
     return (
-      <div className="">
+      <div className="parallax-container">
+        <h1 className="header center teal-text text-lighten-2">TraveLink</h1>
+
+        <h5 className="header col s12 light">
+            See places around your destination
+        </h5>
+
+        <Row>
+            <Input placeholder="Street, Adress, Postal Code" s={12} m={6} l={6} label="" />
+            <Button s={6}>Search</Button>
+        </Row>
+
+        <div className="parallax">
+          <img src="images/parallax1.jpg" />
+        </div>
+      </div>
+    );
+  }
+}
+
+class Paralax1 extends React.Component {
+  render() {
+    return (
+      <div className="row">
         <div className="section p-section no-pad-bot">
           <div className="container">
             
@@ -35,7 +58,7 @@ class Paralax extends React.Component {
             </div>
           </div>
 
-          <div className="parallax"><img src="images/parallax1.jpg" /></div>
+          
           
         </div>
       </div>
