@@ -26,11 +26,15 @@
 				});
 				return(
 					<div>
-					<h5>Popular</h5>
-					<ul>
-						{airportRows}
-					</ul>
-					</div>           
+						<div className="mui-container padding-reset">
+							<div className="search-flight font-semibold">
+								Kota Populer
+							</div>
+							<div>
+								{airportRows}
+							</div>
+						</div>
+					</div>          
 				);
 			}
 		}
@@ -59,11 +63,17 @@
 				});
 				return(
 					<div>
-					<h5>Pencarian Terakhir</h5>
-					<ul>
-						{airportRows}
-					</ul>
-					</div>           
+						<div className="mui-container padding-reset">
+							<div className="search-flight font-semibold">
+								Pencarian Terakhir
+							</div>
+							<div>
+								{airportRows}
+							</div>
+						</div>
+						<div className="mui-divider">
+						</div>        
+					</div>
 				);
 			}
 		}
@@ -144,6 +154,8 @@
 						onUserInput={this.handleUserInput}
 						/>
 						
+						<div className="simplebar simplebar-scroll" data-simplebar-direction="vertical">
+							<div class="mui-container mui--text-left flight-top-padding">
 						{ 
 							(this.state.filterText !== "") ? <SearchResult searchResults={this.state.airports} filterText={this.state.filterText} /> : null 
 						}
@@ -151,6 +163,8 @@
 						{ 
 							(this.state.filterText == "") ? <div><History history={this.state.history} searchResults={this.state.airports} /> <Popular searchResults={this.state.airports} /></div> : null 
 						}
+							</div>
+						</div>
 
 					</div>
 				);
@@ -183,11 +197,15 @@
 
 				return (
 					<div>
-						<h5>Hasil Pencarian</h5>
-						<ul>
-							{rows}
-						</ul>
-					</div>  
+						<div className="mui-container padding-reset">
+							<div className="search-flight font-semibold">
+								Hasil Pencarian
+							</div>
+							<div>
+								{rows}
+							</div>
+						</div>
+					</div>
 				);
 			}
 		}
@@ -219,7 +237,6 @@
 			}
 		}
 
-		
 		ReactDOM.render(
 			<FilterableAirport url='airport.json' url_history='airporthistory.json' />,
 			document.getElementById('content')
