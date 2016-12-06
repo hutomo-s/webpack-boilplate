@@ -11,7 +11,6 @@
   </head>
   <body>
     <div id="content"></div>
-    <!--<script type="text/babel" src="main.js"></script>-->
 
 	<script type="text/babel">
 
@@ -40,8 +39,20 @@
 		}
 
 		class AirportRow extends React.Component {
+			handleClick(code, city) {
+				alert(code + " " + city);
+			}
+
 			render() {
-				return (<p> {this.props.city} {this.props.name} {this.props.code} </p>);
+				return (
+					<div 
+						className="mui-col-xs-12 airport-list" 
+						onClick={ () => { this.handleClick(this.props.code, this.props.city) } }
+					>
+						<p className="font-semibold">{this.props.city}</p>
+						<p className="mui--text-caption">{this.props.name} ({this.props.code})</p>
+					</div>
+				);
 			}
 		}
 
