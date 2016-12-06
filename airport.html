@@ -224,15 +224,29 @@
 		
 			render() {
 				return (
-				<form>
-					<input
-					type="text"
-					placeholder="Search..."
-					value={this.props.filterText}
-					ref={(input) => this.filterTextInput = input}
-					onChange={this.handleChange}
-					/>
-				</form>
+					<header className="flight-navbar mui-panel bg-white-flight">
+						<div className="margin-reset mui-row">
+							<div className="add-padding1 mui--appbar-height mui-col-xs-12 mui-col-md-12">
+								<form className="navbar--search_form">
+									<a className="clickable-thumbnail">
+										<i className="material-icons back-search-flight">&#xE5C4;</i>
+									</a>
+									
+									<input
+										type="text"
+										className="flight-search-box flight-search-bar mui--text-left"
+										placeholder="Ketik nama Kota atau Bandara"
+										value={this.props.filterText}
+										ref={(input) => this.filterTextInput = input}
+										onChange={this.handleChange}
+									/>
+
+									<button className="flight-search-icon search"><i className="material-icons">&#xE8B6;</i></button>
+									<button className="flight-close-icon search" type="reset"><i className="material-icons" type="reset">&#xE14C;</i></button>
+								</form>
+							</div>
+						</div>
+					</header>
 				);
 			}
 		}
