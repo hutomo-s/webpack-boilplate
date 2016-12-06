@@ -94,6 +94,7 @@
 			}
 
 			handleUserInput(filterText) {
+								
 				this.setState({
 				filterText: filterText,
 				});
@@ -142,9 +143,15 @@
 						filterText={this.state.filterText}
 						onUserInput={this.handleUserInput}
 						/>
-						<History history={this.state.history} searchResults={this.state.airports} />
-						<Popular searchResults={this.state.airports} />
-						<SearchResult searchResults={this.state.airports} filterText={this.state.filterText} />
+						
+						{ 
+							(this.state.filterText !== "") ? <SearchResult searchResults={this.state.airports} filterText={this.state.filterText} /> : null 
+						}
+
+						{ 
+							(this.state.filterText == "") ? <div><History history={this.state.history} searchResults={this.state.airports} /> <Popular searchResults={this.state.airports} /></div> : null 
+						}
+
 					</div>
 				);
 			}
@@ -158,7 +165,10 @@
 				
 				searchResults.forEach((result) => {
 
-					var name = result.airport_city + result.airport_name + result.airport_code;
+					var tagArray = result.tag;
+					var tag = tagArray.join(" ");
+
+					var name = result.airport_city + result.airport_name + result.airport_code + tag;
 					var nametext = name.toLowerCase();
 					var filtertext = this.props.filterText.toLowerCase();
 
