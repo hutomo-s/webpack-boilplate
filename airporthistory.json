@@ -1,0 +1,11 @@
+{
+	"status": 200,
+	"message": "Success",
+	"history": {
+		"history": ["CGK", "DPS"],
+		"current": {
+			"departure_city": "Jakarta",
+			"arrival_city": "Bali, Denpasar"
+		}
+	}
+}

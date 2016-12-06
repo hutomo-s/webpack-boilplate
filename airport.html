@@ -19,16 +19,18 @@
 			render() {
 				var airportRows = this.props.searchResults.map(function(result) {
 					if(!result.popular){
-						console.log(result);
 						return;
 					}
 					
 					return <AirportRow city={result.airport_city} name={result.airport_name} code={result.airport_code} />
 				});
 				return(
+					<div>
+					<h5>Popular</h5>
 					<ul>
 						{airportRows}
-					</ul>           
+					</ul>
+					</div>           
 				);
 			}
 		}
@@ -38,17 +40,47 @@
 				return (<p> {this.props.city} {this.props.name} {this.props.code} </p>);
 			}
 		}
+
+		class History extends React.Component {
+			render() {
+
+				var historyAirportCodes = this.props.history;
+
+				var airportRows = this.props.searchResults.map(function(result) {
+					
+					var history_key = $.inArray( result.airport_code, historyAirportCodes );
+					var history_available = (history_key != -1)? true : false;
+
+					if(!history_available){
+						return;
+					}
+					
+					return <AirportRow city={result.airport_city} name={result.airport_name} code={result.airport_code} />
+				});
+				return(
+					<div>
+					<h5>Pencarian Terakhir</h5>
+					<ul>
+						{airportRows}
+					</ul>
+					</div>           
+				);
+			}
+		}
 		
 		class FilterableAirport extends React.Component {
 			constructor(props) {
 				super(props);
 
 				var url = this.props.url;
+				var url_history = this.props.url_history;
 				
 				this.state = {
 					filterText: '',
 					url: url,
-					airports: []
+					url_history: url_history,
+					airports: [],
+					history: [],
 				};
 
 				this.handleUserInput = this.handleUserInput.bind(this);
@@ -58,6 +90,7 @@
 
 			componentDidMount() {
 				this.loadAirportList();
+				this.loadHistoryList();
 			}
 
 			handleUserInput(filterText) {
@@ -77,8 +110,26 @@
 						console.log(data);
 					}.bind(this),
 					error: function(xhr, status, err) {
-						console.error(status + " :: " + this.props.search_uri);
-						//console.error(this.props.url, status, err.toString());
+						console.error(this.state.url, status, err.toString());
+					}.bind(this)
+				});
+			}
+
+			loadHistoryList() {
+				
+				$.ajax({
+					url: this.state.url_history,
+					dataType: 'json',
+					cache: false,
+					success: function(data) {
+						if(data.history){
+							var history = data.history.history;
+							this.setState({history: history});
+						}
+
+					}.bind(this),
+					error: function(xhr, status, err) {
+						console.error(this.state.url, status, err.toString());
 					}.bind(this)
 				});
 			}
@@ -91,6 +142,7 @@
 					filterText={this.state.filterText}
 					onUserInput={this.handleUserInput}
 					/>
+					<History history={this.state.history} searchResults={this.state.airports} />
 					<Popular searchResults={this.state.airports} />
 				</div>
 				);
@@ -126,7 +178,7 @@
 
 		
 		ReactDOM.render(
-			<FilterableAirport url='airport.json' />,
+			<FilterableAirport url='airport.json' url_history='airporthistory.json' />,
 			document.getElementById('content')
 		);
 
