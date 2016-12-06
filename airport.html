@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Airport List</title>
+    <!-- Just for basic styling. -->
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>	
+  </head>
+  <body>
+    <div id="content"></div>
+    <!--<script type="text/babel" src="main.js"></script>-->
+
+	<script type="text/babel">
+
+		class Popular extends React.Component {
+			
+		}
+
+		class AirportRow extends React.Component {
+
+		}
+		
+		class FilterableAirport extends React.Component {
+			constructor(props) {
+				super(props);
+
+				var url = this.props.url;
+				
+				this.state = {
+					filterText: '',
+					url: url,
+					airports: []
+				};
+
+				this.handleUserInput = this.handleUserInput.bind(this);
+
+				
+			}
+
+			componentDidMount() {
+				this.loadAirportList();
+			}
+
+			handleUserInput(filterText) {
+				this.setState({
+				filterText: filterText,
+				});
+			}
+
+			loadAirportList() {
+				
+				$.ajax({
+					url: this.state.url,
+					dataType: 'json',
+					cache: false,
+					success: function(data) {
+						this.setState({airports: data});
+						console.log(data);
+					}.bind(this),
+					error: function(xhr, status, err) {
+						console.error(status + " :: " + this.props.search_uri);
+						//console.error(this.props.url, status, err.toString());
+					}.bind(this)
+				});
+			}
+
+
+			render() {
+				return (
+				<div>
+					<SearchBar
+					filterText={this.state.filterText}
+					onUserInput={this.handleUserInput}
+					/>
+					
+				</div>
+				);
+			}
+		}
+
+		class SearchBar extends React.Component {
+			constructor(props) {
+				super(props);
+				this.handleChange = this.handleChange.bind(this);
+			}
+		
+			handleChange() {
+				this.props.onUserInput(
+				this.filterTextInput.value
+				);
+			}
+		
+			render() {
+				return (
+				<form>
+					<input
+					type="text"
+					placeholder="Search..."
+					value={this.props.filterText}
+					ref={(input) => this.filterTextInput = input}
+					onChange={this.handleChange}
+					/>
+				</form>
+				);
+			}
+		}
+
+		
+		ReactDOM.render(
+			<FilterableAirport url='airport.json' />,
+			document.getElementById('content')
+		);
+
+  </script>
+  </body>
+</html>
