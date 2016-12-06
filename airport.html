@@ -137,14 +137,47 @@
 
 			render() {
 				return (
-				<div>
-					<SearchBar
-					filterText={this.state.filterText}
-					onUserInput={this.handleUserInput}
-					/>
-					<History history={this.state.history} searchResults={this.state.airports} />
-					<Popular searchResults={this.state.airports} />
-				</div>
+					<div>
+						<SearchBar
+						filterText={this.state.filterText}
+						onUserInput={this.handleUserInput}
+						/>
+						<History history={this.state.history} searchResults={this.state.airports} />
+						<Popular searchResults={this.state.airports} />
+						<SearchResult searchResults={this.state.airports} filterText={this.state.filterText} />
+					</div>
+				);
+			}
+		}
+
+		class SearchResult extends React.Component {
+			render() {
+				var rows = [];
+
+				var searchResults = this.props.searchResults;
+				
+				searchResults.forEach((result) => {
+
+					var name = result.airport_city + result.airport_name + result.airport_code;
+					var nametext = name.toLowerCase();
+					var filtertext = this.props.filterText.toLowerCase();
+
+					if (nametext.indexOf(filtertext) === -1) {
+						return;
+					}
+
+					if(filtertext != ""){
+						rows.push(<AirportRow city={result.airport_city} name={result.airport_name} code={result.airport_code} />);
+					}
+				});
+
+				return (
+					<div>
+						<h5>Hasil Pencarian</h5>
+						<ul>
+							{rows}
+						</ul>
+					</div>  
 				);
 			}
 		}
