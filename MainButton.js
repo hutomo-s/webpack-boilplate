@@ -56,35 +56,19 @@ class MainButton extends Component {
   constructor(props, context) {
     super(props, context);
 
-    this.handleRequestClose = this.handleRequestClose.bind(this);
-    this.handleTouchTap = this.handleTouchTap.bind(this);
+	this.onNewRequest = this.onNewRequest.bind(this);
 
     this.state = {
       open: false,
     };
   }
 
-  handleRequestClose() {
-    this.setState({
-      open: false,
-    });
-  }
 
-  handleTouchTap() {
-    this.setState({
-      open: true,
-    });
+  onNewRequest(searchTerm) {
+	alert("SUBMIT");
   }
 
   render() {
-    const standardActions = (
-      <FlatButton
-        label="Ok"
-        primary={true}
-        onTouchTap={this.handleRequestClose}
-      />
-    );
-
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={styles.container}>
@@ -93,6 +77,7 @@ class MainButton extends Component {
 			filter={AutoComplete.fuzzyFilter}
 			dataSource={fruit}
 			maxSearchResults={5}
+			onNewRequest={this.onNewRequest}
 			/>
         </div>
       </MuiThemeProvider>

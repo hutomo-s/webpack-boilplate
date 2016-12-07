@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {NavItem, Navbar, Dropdown, Button, Icon, Footer, Col, Row, Input, CardPanel, Tabs, Tab} from 'react-materialize';
 
-import { Autocomplete }   from 'material-ui';
-import getMuiTheme        from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider   from 'material-ui/styles/MuiThemeProvider';
+// import { Autocomplete }   from 'material-ui';
+// import getMuiTheme        from 'material-ui/styles/getMuiTheme';
+// import MuiThemeProvider   from 'material-ui/styles/MuiThemeProvider';
 //AreaAutocomplete
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import MainButton from './MainButton'; // Our custom react component
+
+injectTapEventPlugin();
 
 class Nav extends React.Component {
   render() {
