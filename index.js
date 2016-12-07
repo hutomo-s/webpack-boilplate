@@ -2,6 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {NavItem, Navbar, Dropdown, Button, Icon, Footer, Col, Row, Input, CardPanel, Tabs, Tab} from 'react-materialize';
 
+import { Autocomplete }   from 'material-ui';
+import getMuiTheme        from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider   from 'material-ui/styles/MuiThemeProvider';
+//AreaAutocomplete
+import MainButton from './MainButton'; // Our custom react component
+
 class Nav extends React.Component {
   render() {
     return (
@@ -24,7 +30,7 @@ class Paralax extends React.Component {
         </h5>
 
         <Row>
-            <Input placeholder="Street, Adress, Postal Code" s={12} m={6} l={6} label="" />
+            <MainButton />
             <Button s={6}>Search</Button>
         </Row>
 
