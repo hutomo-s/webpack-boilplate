@@ -9,15 +9,21 @@ import {NavItem, Navbar, Dropdown, Button, Icon, Footer, Col, Row, Input, CardPa
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MainButton from './MainButton'; // Our custom react component
 
+import { Router, Route, IndexRoute, Link, browserHistory } from "react-router"
+// import createBrowserHistory from 'history/lib/createBrowserHistory'
+
 injectTapEventPlugin();
 
 class Nav extends React.Component {
   render() {
     return (
-      <Navbar brand='logo' right>
-        <NavItem href='#'>About</NavItem>
-        <NavItem href='#'>Contact</NavItem>
-      </Navbar>
+      <div>
+        <Navbar brand='logo' right>
+          <NavItem><Link to="/">Home</Link></NavItem>
+          <NavItem><Link to="/search">Search</Link></NavItem>
+        </Navbar>
+        {this.props.children}
+      </div>
     );
   }
 }
@@ -28,7 +34,7 @@ class Paralax extends React.Component {
       <div className="parallax-container">
         <h1 className="header center teal-text text-lighten-2">TraveLink</h1>
 
-        <h5 className="header col s12 light">
+        <h5 className="header center col s12 light">
             See places around your destination
         </h5>
 
@@ -262,8 +268,17 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <Nav />
         <Paralax />
+        <FootLinks />
+      </div>
+    );
+  }
+}
+
+class Search extends React.Component {
+  render () {
+    return(
+      <div>
         <Ttab />
         <Result />
         <FootLinks />
@@ -272,6 +287,26 @@ class App extends React.Component {
   }
 }
 
+class Links extends React.Component {
+  render() {
+    return (
+      <div>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/search">Search</Link></li>
+        </ul>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
 ReactDOM.render(
-  <App />, document.querySelector('.react-root')
+  <Router history={browserHistory}>
+    <Route path="/" component={Nav}>
+      <IndexRoute component={App} />
+        <Route path="search" component={Search}>
+      </Route>
+    </Route>
+  </Router>, document.querySelector('.react-root')
 );

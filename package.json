@@ -18,8 +18,9 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-materialize": ">=0.14.0",
-    "react-router": "^1.0.0-rc1",
-    "react-tap-event-plugin": "^2.0.0"
+    "react-router": "^2.6.0",
+    "react-tap-event-plugin": "^2.0.0",
+    "history": "^1.11.1"
   },
   "devDependencies": {
     "babel": "^6.1.18",
