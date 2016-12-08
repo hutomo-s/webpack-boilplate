@@ -9,6 +9,8 @@ import {NavItem, Navbar, Dropdown, Button, Icon, Footer, Col, Row, Input, CardPa
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MainButton from './MainButton'; // Our custom react component
 
+import Place from './Place.js'
+
 import { Router, Route, IndexRoute, Link, browserHistory } from "react-router"
 // import createBrowserHistory from 'history/lib/createBrowserHistory'
 
@@ -280,7 +282,7 @@ class Search extends React.Component {
     return(
       <div>
         <Ttab />
-        <Result />
+        <Place  />
         <FootLinks />
       </div>
     );
