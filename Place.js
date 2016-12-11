@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import {Col, Row, CardPanel} from 'react-materialize';
+import {Col, Row, CardPanel, Icon} from 'react-materialize';
 
 class Place extends Component {
     // Constructor is responsible for setting up props and setting initial stte
     constructor(props){
         // Pass props to the parent component
         super(props);
+
+		var query = this.props.params;
+
         // Set initial state
         this.state = {
             // State needed
-            places: []
+			title: "Culinary in Slipi",
+            places: [],
+			query: query
         };
+
     }
 
     componentDidMount(){
@@ -68,36 +74,34 @@ class Place extends Component {
             return (
 				<CardPanel className="lighten-4 black-text hoverable">
 					<div className="row">
-					<Col s={2}>
-						{place.img}
-					</Col>
+						<Col s={3} m={2}>
+							{place.img}
+						</Col>
 
-					<Col s={10}>
-						{place.name} <br />
+						<Col s={9} m={10}>
+							{place.name} <br />
 
-						{place.subcategory_name != "" &&
-							<span>
-								{place.subcategory_name} <br />
-							</span>
-						}
+							{place.subcategory_name != "" &&
+								<span>
+									<Icon>label</Icon> {place.subcategory_name} <br />
+								</span>
+							}
 
-						{place.open_hours != "" &&
-							<span>
-								{place.open_hours} <br />
-							</span>
-						}
-
-						{place.full_address} 
-					
-					</Col>
-				
+							{place.open_hours != "" &&
+								<span>
+									<Icon>schedule</Icon> {place.open_hours} <br />
+								</span>
+							}
+							
+							<Icon>location_on</Icon> {place.full_address} 
+						</Col>
 					</div>
           		</CardPanel>
             )
         });
         return (
             <div className="row container section">
-                 <h5>* Culinary in Slipi</h5>
+                 <h5>{this.state.title}</h5>
 				{placeNode}
             </div>
         );

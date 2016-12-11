@@ -98,6 +98,7 @@ class FootLinks extends React.Component {
           <Col s={12} m={6} l={6} className='grid-example'>
             <h5 className="truncate white-text">Popular Culinary Destination</h5>
             <ul>
+              <li><Link to="/search/1/3">Slipi, DKI Jakarta Culinary</Link></li>
               <li><a className="truncate grey-text text-lighten-3" href="#!">Slipi, DKI Jakarta Culinary</a></li>
               <li><a className="truncate grey-text text-lighten-3" href="#!">Cihampelas, Bandung Culinary</a></li>
               <li><a className="truncate grey-text text-lighten-3" href="#!">Tj Pandan, Belitung Culinary</a></li>
@@ -282,7 +283,7 @@ class Search extends React.Component {
     return(
       <div>
         <Ttab />
-        <Place  />
+        <Place params={this.props.params} />
         <FootLinks />
       </div>
     );
@@ -308,6 +309,7 @@ ReactDOM.render(
     <Route path="/" component={Nav}>
       <IndexRoute component={App} />
         <Route path="search" component={Search}>
+        <Route path="/search/:areaId/:catId" component={Search}/>
       </Route>
     </Route>
   </Router>, document.querySelector('.react-root')
